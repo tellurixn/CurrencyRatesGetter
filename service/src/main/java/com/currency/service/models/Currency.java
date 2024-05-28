@@ -19,7 +19,7 @@ public class Currency {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long currencyId;
 
-    @Column(nullable = false, unique = true, name = "date")
+    @Column(nullable = false, name = "date")
     private LocalDate date;
 
     @Column(nullable = false, name = "value")
@@ -27,4 +27,10 @@ public class Currency {
 
     @Column(nullable = false, name = "code")
     private String code;
+
+    public Currency(LocalDate date, double value, String code){
+        this.date = date;
+        this.value = value;
+        this.code = code;
+    }
 }

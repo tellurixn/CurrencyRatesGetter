@@ -6,14 +6,15 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Repository
 public interface CurrencyRepository extends CrudRepository<Currency, Long> {
 
-    Currency findCurrencyByDate(LocalDate date);
+    List<Currency> findCurrencyByDate(LocalDate date);
 
-    Currency findCurrencyByCode(String code);
+    List<Currency> findCurrencyByCode(String code);
 
     Currency findCurrencyByCodeAndDate(String code, LocalDate date);
 }
