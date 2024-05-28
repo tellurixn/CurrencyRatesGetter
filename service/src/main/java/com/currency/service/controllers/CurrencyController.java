@@ -4,6 +4,7 @@ import com.currency.service.models.Currency;
 import com.currency.service.repositories.CurrencyRepository;
 import com.currency.service.services.CurrencyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,16 +30,20 @@ public class CurrencyController {
 
         LocalDate localDate = LocalDate.parse(date);
 
-
         Currency currency = currencyRepository.findCurrencyByCodeAndDate(code, localDate);
 
-
-
-        if(currency != null)
-            return ResponseEntity.ok("success");
-        else {
+        if(currency == null){
             currencyService.addCurrencyRateToDb(localDate);
-            return ResponseEntity.ok("not found");
+            currency = currencyRepository.findCurrencyByCodeAndDate(code, localDate);
+
+            if(currency == null){
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+            else {
+                return new ResponseEntity<>(currency, HttpStatus.OK);
+            }
         }
+        else
+            return new ResponseEntity<>(currency, HttpStatus.OK);
     }
 }

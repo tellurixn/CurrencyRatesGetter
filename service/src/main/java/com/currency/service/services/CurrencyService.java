@@ -65,7 +65,12 @@ public class CurrencyService {
                                 .replace(",", "."));
 
                         Currency currency = new Currency(date, currencyRate, currencyCode);
-                        currencyRepository.save(currency);
+
+                        /*Проверка на дубликат записи в БД
+                          Если курс текущей валюты на заданную дату уже есть в БД, то сохранять дубликат не нужно*/
+                        Currency duplicate = currencyRepository.findCurrencyByCodeAndDate(currencyCode, date);
+                        if(duplicate == null)
+                            currencyRepository.save(currency);
                     }
                 }
             } catch (Exception e) {
