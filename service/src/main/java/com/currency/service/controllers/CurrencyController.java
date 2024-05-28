@@ -1,5 +1,6 @@
 package com.currency.service.controllers;
 
+import com.currency.service.errors.ServiceError;
 import com.currency.service.models.Currency;
 import com.currency.service.repositories.CurrencyRepository;
 import com.currency.service.services.CurrencyService;
@@ -37,7 +38,9 @@ public class CurrencyController {
             currency = currencyRepository.findCurrencyByCodeAndDate(code, localDate);
 
             if(currency == null){
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                return new ResponseEntity<>(new ServiceError(HttpStatus.NOT_FOUND.value(),
+                        "Валюта с кодом " + code + " на дату " + localDate + " не найдена."),
+                        HttpStatus.NOT_FOUND);
             }
             else {
                 return new ResponseEntity<>(currency, HttpStatus.OK);
