@@ -1,6 +1,7 @@
 package com.currency.service.services;
 
 import com.currency.service.models.Currency;
+import com.currency.service.models.CurrencyDto;
 import com.currency.service.repositories.CurrencyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -81,5 +82,21 @@ public class CurrencyService {
         }
 
 
+    }
+
+    public CurrencyDto mapToCurrencyDto(Currency currency){
+        CurrencyDto dto = new CurrencyDto();
+        dto.setCode(currency.getCode());
+        dto.setValue(currency.getValue());
+        dto.setDate(currency.getDate());
+        return dto;
+    }
+
+    public Currency mapToCurrencyEntity(CurrencyDto dto){
+        Currency currency = new Currency();
+        currency.setCode(dto.getCode());
+        currency.setValue(dto.getValue());
+        currency.setDate(dto.getDate());
+        return currency;
     }
 }

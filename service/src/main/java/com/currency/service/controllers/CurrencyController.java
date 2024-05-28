@@ -43,10 +43,10 @@ public class CurrencyController {
                         HttpStatus.NOT_FOUND);
             }
             else {
-                return new ResponseEntity<>(currency, HttpStatus.OK);
+                return new ResponseEntity<>(currencyService.mapToCurrencyDto(currency), HttpStatus.OK);
             }
         }
         else
-            return new ResponseEntity<>(currency, HttpStatus.OK);
+            return new ResponseEntity<>(currencyService.mapToCurrencyDto(currency), HttpStatus.OK);
     }
 }
