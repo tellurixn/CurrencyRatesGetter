@@ -22,7 +22,7 @@
 
 ![image](https://github.com/tellurixn/CurrencyRatesGetter/assets/90182791/7e546491-88d8-44ac-ace1-d60775c3f688)
 
-# Демонтрация работы
+# Демонстрация работы
 
 Запустим приложение и попробуем получить курс валюты на определенный день
 
@@ -45,7 +45,7 @@
 
 ![image](https://github.com/tellurixn/CurrencyRatesGetter/assets/90182791/d5157b46-5bfd-4117-a702-6351c9d3fdb8)
 
-Перед ответом приложение запрсило данные с ЦБ, сохранило их локально и выдало ответ:
+Перед ответом приложение запросило данные с ЦБ, сохранило их локально и выдало ответ:
 
 ![image](https://github.com/tellurixn/CurrencyRatesGetter/assets/90182791/30ab1570-05a7-49ad-8b1a-226752a201b7)
 
